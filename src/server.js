@@ -4,6 +4,9 @@ const Hapi = require('@hapi/hapi');
 const songs = require('./api/songs');
 const SongsSevice = require('./services/inMemory/SongsService');
 
+// mendaftarkan validasi data
+const SongsValidator = require('./validator/songs');
+
 const init = async () => {
   // instansiasi SongsService
   const songsService = new SongsSevice();
@@ -23,6 +26,7 @@ const init = async () => {
     plugin: songs,
     options: {
       service: songsService,
+      validator: SongsValidator,
     },
   });
 
