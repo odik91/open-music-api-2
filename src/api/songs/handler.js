@@ -89,7 +89,7 @@ class SongsHandler {
     }
   }
 
-  deleterSongByIdHandler(request, h) {
+  deleteSongByIdHandler(request, h) {
     try {
       const { songId } = request.params;
       this._service.deleteSongById(songId);
