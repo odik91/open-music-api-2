@@ -7,7 +7,7 @@ class SongsSevice {
   }
 
   addSong({
-    title,
+    title = 'untitled',
     year,
     performer,
     genre,

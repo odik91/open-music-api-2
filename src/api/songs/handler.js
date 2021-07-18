@@ -4,7 +4,7 @@ class SongsHandler {
     this._service = service;
     this._validator = validator;
 
-    this.postSongHandler = this.putSongByIdHandler.bind(this);
+    this.postSongHandler = this.postSongHandler.bind(this);
     this.getSongsHandler = this.getSongsHandler.bind(this);
     this.getSongByIdHandler = this.getSongByIdHandler.bind(this);
     this.putSongByIdHandler = this.putSongByIdHandler.bind(this);
@@ -54,7 +54,7 @@ class SongsHandler {
     return {
       status: 'success',
       data: {
-        songs,
+        songs: songs.map((item) => ({ id: item.id, title: item.title, performer: item.performer })),
       },
     };
   }
