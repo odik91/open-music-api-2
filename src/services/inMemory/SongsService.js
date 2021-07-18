@@ -39,7 +39,7 @@ class SongsSevice {
     return id;
   }
 
-  getSong() {
+  getSongs() {
     return this._songs;
   }
 
