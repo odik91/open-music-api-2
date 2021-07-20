@@ -111,11 +111,22 @@ class SongsHandler {
         message: 'Lagu berhasil diperbarui',
       };
     } catch (error) {
+      if (error instanceof ClientError) {
+        const response = h.response({
+          status: 'fail',
+          message: error.message,
+        });
+        response.code(error.statusCode);
+        return response;
+      }
+
+      // server error
       const response = h.response({
         status: 'fail',
-        message: error.message,
+        message: 'Maaf, terjadi kegagalan pada server kami',
       });
-      response.code(404);
+      response.code(500);
+      console.error(error);
       return response;
     }
   }
