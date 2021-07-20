@@ -79,16 +79,7 @@ class SongsHandler {
       return {
         status: 'success',
         data: {
-          song: {
-            id: song.id,
-            title: song.title,
-            year: parseInt(song.year, 10),
-            performer: song.performer,
-            genre: song.genre,
-            duration: parseInt(song.duration, 10),
-            insertedAt: song.insertedAt,
-            updatedAt: song.updatedAt,
-          },
+          song,
         },
       };
     } catch (error) {
