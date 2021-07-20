@@ -1,3 +1,5 @@
+const ClientError = require('../../exceptions/ClientError');
+
 /* eslint-disable no-underscore-dangle */
 class SongsHandler {
   constructor(service, validator) {
@@ -40,11 +42,22 @@ class SongsHandler {
       response.code(201);
       return response;
     } catch (error) {
+      if (error instanceof ClientError) {
+        const response = h.response({
+          status: 'fail',
+          message: error.message,
+        });
+        response.code(400);
+        return response;
+      }
+
+      // Server Error!
       const response = h.response({
-        status: 'fail',
-        message: error.message,
+        status: 'error',
+        message: 'Maaf, terjadi kegagalan pada server kami',
       });
-      response.code(400);
+      response.code(500);
+      console.error(error);
       return response;
     }
   }
