@@ -5,7 +5,8 @@ const Hapi = require('@hapi/hapi');
 
 // menambahkan plugins songs dan service
 const songs = require('./api/songs');
-const SongsSevice = require('./services/inMemory/SongsService');
+// const SongsSevice = require('./services/inMemory/SongsService');
+const SongsSevice = require('./services/postgres/SongsService');
 
 // mendaftarkan validasi data
 const SongsValidator = require('./validator/songs');
